@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Custom AI Agent Tool for Evolution API integration with n8n - WhatsApp automation for AI workflows",
   "keywords": [
+    "n8n-community-node-package",
     "n8n",
     "n8n-nodes",
     "ai-agent",
@@ -26,8 +27,7 @@
   "packageManager": "npm@10.8.0",
   "main": "index.js",
   "scripts": {
-    "build": "tsc && npm run copy:icons",
-    "copy:icons": "copyfiles -u 1 nodes/**/*.svg dist/",
+    "build": "tsc && gulp build:icons",
     "dev": "tsc --watch",
     "format": "prettier nodes credentials --write",
     "lint": "eslint nodes credentials package.json",
@@ -49,13 +49,13 @@
   "devDependencies": {
     "@types/node": "^20.11.0",
     "@typescript-eslint/parser": "^7.15.0",
-    "copyfiles": "^2.4.1",
     "eslint": "^8.56.0",
     "eslint-plugin-n8n-nodes-base": "^1.16.1",
+    "gulp": "^4.0.2",
+    "gulp-typescript": "^5.0.1",
+    "n8n-core": "*",
+    "n8n-workflow": "*",
     "prettier": "^3.3.2",
     "typescript": "^5.5.3"
-  },
-  "peerDependencies": {
-    "n8n-workflow": "*"
   }
 }

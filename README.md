@@ -1,35 +1,58 @@
 # n8n Evolution API Tool
 
-🚀 Custom AI Agent Tool for Evolution API integration with n8n - WhatsApp automation for AI workflows
+[![npm version](https://badge.fury.io/js/n8n-nodes-evolution-api-tool.svg)](https://badge.fury.io/js/n8n-nodes-evolution-api-tool)
+[![Build Status](https://github.com/Bushidao666/n8n-evolution-api-tool/workflows/CI%2FCD%20Pipeline/badge.svg)](https://github.com/Bushidao666/n8n-evolution-api-tool/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![n8n Community Node](https://img.shields.io/badge/n8n-Community%20Node-FF6D5A)](https://docs.n8n.io/integrations/community-nodes/)
+[![AI Agent Compatible](https://img.shields.io/badge/AI%20Agent-Compatible-4CAF50)](https://docs.n8n.io/ai/)
 
-## Features
+🚀 **The first and only AI Agent Tool for Evolution API integration with n8n** - WhatsApp automation for AI workflows
 
-- **AI Agent Integration**: Seamlessly works with n8n AI Agents using LangChain tool calling interface
-- **WhatsApp Messaging**: Send text messages, images, documents, and audio via WhatsApp Business API
-- **Dynamic Parameters**: Supports `$fromAI()` function for intelligent parameter population by AI agents
-- **Connection Monitoring**: Check WhatsApp instance connection status
-- **Profile Information**: Retrieve WhatsApp profile data
-- **Error Handling**: Comprehensive error handling with meaningful messages
+## ✨ What Makes This Special
 
-## Supported Operations
+🎯 **Built for AI Agents**: Native LangChain tool integration - not a converted regular node  
+🧠 **Intelligent Parameters**: Uses `$fromAI()` for dynamic parameter population by AI  
+💬 **Conversational**: AI understands when and how to send WhatsApp messages  
+⚡ **Professional**: Follows n8n community node standards and conventions  
 
-### 1. Send Text Message
+## 🆚 How We're Different
+
+| Feature | Other Evolution Nodes | **Our AI Tool** |
+|---------|----------------------|------------------|
+| **Target** | Manual workflows | 🤖 **AI Agents** |
+| **Parameter Handling** | Manual configuration | 🧠 **Dynamic $fromAI()** |
+| **Integration** | Standard n8n node | ⚡ **LangChain Tool** |
+| **Usage** | Configure each field | 💬 **Conversational AI** |
+| **Documentation** | Basic | 📚 **Complete + Examples** |
+
+## 🌟 Features
+
+- **🤖 AI Agent Integration**: Seamlessly works with n8n AI Agents using LangChain tool calling interface
+- **📱 WhatsApp Messaging**: Send text messages, images, documents, and audio via WhatsApp Business API
+- **🧠 Dynamic Parameters**: Supports `$fromAI()` function for intelligent parameter population by AI agents
+- **📊 Connection Monitoring**: Check WhatsApp instance connection status
+- **👤 Profile Information**: Retrieve WhatsApp profile data
+- **🛡️ Error Handling**: Comprehensive error handling with meaningful messages
+
+## 📋 Supported Operations
+
+### 1. 💬 Send Text Message
 Send plain text messages to WhatsApp contacts.
 
-### 2. Send Media Message
-- **Images**: Send image files with optional captions
-- **Documents**: Send document files with custom filenames
-- **Audio**: Send audio files and voice messages
+### 2. 📎 Send Media Message
+- **🖼️ Images**: Send image files with optional captions
+- **📄 Documents**: Send document files with custom filenames
+- **🎵 Audio**: Send audio files and voice messages
 
-### 3. Check Connection Status
+### 3. 🔗 Check Connection Status
 Verify if your WhatsApp instance is connected and ready to send messages.
 
-### 4. Get Profile Info
+### 4. 👤 Get Profile Info
 Retrieve profile information for any WhatsApp contact.
 
-## Installation
+## 🚀 Installation
 
-### Method 1: Install from npm (Coming Soon)
+### Method 1: Install from npm
 ```bash
 npm install n8n-nodes-evolution-api-tool
 ```
@@ -60,7 +83,7 @@ npm install n8n-nodes-evolution-api-tool
 
 5. Restart n8n to load the new node.
 
-## Configuration
+## ⚙️ Configuration
 
 ### Evolution API Credentials
 You need to configure Evolution API credentials in n8n:
@@ -78,7 +101,7 @@ Evolution API is a powerful WhatsApp Business API solution. To use this tool:
 3. **Connect WhatsApp**: Connect your WhatsApp account to the instance
 4. **Get Credentials**: Note down your API key and instance details
 
-## Usage in AI Agent Workflows
+## 🤖 Usage in AI Agent Workflows
 
 ### Basic AI Agent Setup
 
@@ -91,19 +114,19 @@ Evolution API is a powerful WhatsApp Business API solution. To use this tool:
 ### Example AI Agent Conversation
 
 ```
-User: "Send a WhatsApp message to +55 11 99999-9999 saying 'Hello from AI!'"
+👤 User: "Send a WhatsApp message to +55 11 99999-9999 saying 'Hello from AI!'"
 
-AI Agent: I'll send that WhatsApp message for you right now.
+🤖 AI Agent: I'll send that WhatsApp message for you right now.
 
 [AI Agent uses Evolution API Tool with:]
 - Operation: Send Text Message  
 - Phone Number: 5511999999999
 - Message: "Hello from AI!"
 
-Result: ✅ Message sent successfully!
+✅ Result: Message sent successfully!
 ```
 
-### Dynamic Parameter Population
+### 🧠 Dynamic Parameter Population
 
 The tool supports n8n's `$fromAI()` function for intelligent parameter handling:
 
@@ -118,7 +141,7 @@ messageText: $fromAI('messageContent', 'WhatsApp message to send', 'string')
 mediaType: $fromAI('mediaType', 'Type of media to send (image/document/audio)', 'string')
 ```
 
-## Phone Number Format
+## 📱 Phone Number Format
 
 **Important**: Phone numbers must include country code without the `+` sign:
 
@@ -127,7 +150,7 @@ mediaType: $fromAI('mediaType', 'Type of media to send (image/document/audio)', 
 - ❌ Wrong: `+55 11 99999-9999`
 - ❌ Wrong: `11999999999` (missing country code)
 
-## AI Agent Tool Description
+## 🎯 AI Agent Tool Description
 
 The tool automatically provides this description to AI agents:
 
@@ -135,7 +158,7 @@ The tool automatically provides this description to AI agents:
 
 You can customize this description in the node settings to better match your specific use case.
 
-## API Endpoints Used
+## 🔗 API Endpoints Used
 
 This tool interacts with the following Evolution API endpoints:
 
@@ -145,7 +168,7 @@ This tool interacts with the following Evolution API endpoints:
 - `GET /instance/connectionState/{instance}` - Check connection status
 - `POST /chat/whatsappProfile/{instance}` - Get profile information
 
-## Error Handling
+## 🛡️ Error Handling
 
 The tool provides comprehensive error handling:
 
@@ -156,7 +179,7 @@ The tool provides comprehensive error handling:
 
 All errors include helpful descriptions to guide troubleshooting.
 
-## Examples
+## 📝 Examples
 
 ### Example 1: Simple Text Message
 ```json
@@ -190,7 +213,7 @@ All errors include helpful descriptions to guide troubleshooting.
 }
 ```
 
-## Development
+## 🛠️ Development
 
 ### Building
 ```bash
@@ -208,7 +231,7 @@ npm run lintfix
 npm run format
 ```
 
-## Contributing
+## 🤝 Contributing
 
 1. Fork the repository
 2. Create a feature branch: `git checkout -b feature-name`
@@ -218,23 +241,23 @@ npm run format
 6. Push to the branch: `git push origin feature-name`
 7. Submit a pull request
 
-## Requirements
+## 📋 Requirements
 
 - **n8n**: Version 1.0.0 or higher
 - **Node.js**: Version 20.19 to 24.x
 - **Evolution API**: Compatible instance
 
-## License
+## 📄 License
 
 MIT License - see [LICENSE](LICENSE) file for details.
 
-## Support
+## 🆘 Support
 
 - 🐛 **Issues**: [GitHub Issues](https://github.com/Bushidao666/n8n-evolution-api-tool/issues)
 - 📖 **Evolution API Docs**: [doc.evolution-api.com](https://doc.evolution-api.com/)
 - 📖 **n8n Docs**: [docs.n8n.io](https://docs.n8n.io)
 
-## Roadmap
+## 🗺️ Roadmap
 
 - [ ] Support for WhatsApp Groups
 - [ ] Message templates
@@ -248,4 +271,4 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 **Made with ❤️ for the n8n community**
 
-Transform your AI workflows with intelligent WhatsApp messaging capabilities!
+🚀 Transform your AI workflows with intelligent WhatsApp messaging capabilities!

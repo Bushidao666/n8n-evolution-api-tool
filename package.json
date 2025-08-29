@@ -1,0 +1,61 @@
+{
+  "name": "n8n-nodes-evolution-api-tool",
+  "version": "1.0.0",
+  "description": "Custom AI Agent Tool for Evolution API integration with n8n - WhatsApp automation for AI workflows",
+  "keywords": [
+    "n8n",
+    "n8n-nodes",
+    "ai-agent",
+    "evolution-api",
+    "whatsapp",
+    "ai-tools"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Bushidao666/n8n-evolution-api-tool",
+  "author": {
+    "name": "Bushidao666",
+    "email": "your-email@example.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Bushidao666/n8n-evolution-api-tool.git"
+  },
+  "engines": {
+    "node": ">=20.19 <=24.x"
+  },
+  "packageManager": "npm@10.8.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc && npm run copy:icons",
+    "copy:icons": "copyfiles -u 1 nodes/**/*.svg dist/",
+    "dev": "tsc --watch",
+    "format": "prettier nodes credentials --write",
+    "lint": "eslint nodes credentials package.json",
+    "lintfix": "eslint nodes credentials package.json --fix",
+    "prepublishOnly": "npm run build && npm run lint -s"
+  },
+  "files": [
+    "dist"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/EvolutionApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/EvolutionApiTool/EvolutionApiTool.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@typescript-eslint/parser": "^7.15.0",
+    "copyfiles": "^2.4.1",
+    "eslint": "^8.56.0",
+    "eslint-plugin-n8n-nodes-base": "^1.16.1",
+    "prettier": "^3.3.2",
+    "typescript": "^5.5.3"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
+}

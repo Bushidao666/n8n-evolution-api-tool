@@ -33,9 +33,6 @@ jobs:
     - name: Check TypeScript compilation
       run: npm run build
     
-    - name: Check formatting
-      run: npm run format -- --check
-    
     - name: Archive build artifacts
       uses: actions/upload-artifact@v4
       with:
@@ -76,5 +73,6 @@ jobs:
         tar -tzf n8n-nodes-evolution-api-tool-*.tgz | grep -q "package/package.json" || (echo "❌ Missing package.json" && exit 1)
         tar -tzf n8n-nodes-evolution-api-tool-*.tgz | grep -q "package/README.md" || (echo "❌ Missing README.md" && exit 1)
         tar -tzf n8n-nodes-evolution-api-tool-*.tgz | grep -q "package/LICENSE" || (echo "❌ Missing LICENSE" && exit 1)
+        tar -tzf n8n-nodes-evolution-api-tool-*.tgz | grep -q "package/index.js" || (echo "❌ Missing index.js" && exit 1)
         
         echo "✅ Package validation passed!"

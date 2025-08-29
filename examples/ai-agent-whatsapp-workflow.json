@@ -1,0 +1,174 @@
+{
+  "name": "AI Agent WhatsApp Evolution API Example",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "9b5fb6f3-6c58-4c6c-81d7-8df4d4f4d4f4",
+      "name": "Chat Trigger",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1,
+      "position": [
+        300,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "agent": "toolsAgent",
+        "promptType": "define",
+        "text": "You are a helpful AI assistant that can send WhatsApp messages using Evolution API.\n\nWhen users ask you to send WhatsApp messages:\n- Always ask for the phone number if not provided (format: country code + number, no + sign)\n- Confirm the message content before sending\n- Use the Evolution API Tool to send messages\n- Inform the user about the success or failure of the message\n\nYou can also:\n- Check WhatsApp connection status\n- Send different types of media (images, documents, audio)\n- Get profile information of contacts\n\nBe friendly and helpful!",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "You are a WhatsApp AI assistant powered by Evolution API. Help users send messages, media, and manage their WhatsApp automation needs."
+        }
+      },
+      "id": "8a5eb5f2-5c47-4c5c-80d6-7df3d3f3d3f3",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1,
+      "position": [
+        520,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "options": {
+          "temperature": 0.2,
+          "maxTokens": 1000
+        }
+      },
+      "id": "7a4da4f1-4c46-4c4c-7fd5-6ef2d2f2d2f2",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1,
+      "position": [
+        740,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "sessionIdType": "fromInput",
+        "contextWindowLength": 10
+      },
+      "id": "6a3ca3f0-3c45-4c4c-6ed4-5ef1d1f1d1f1",
+      "name": "Window Buffer Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1,
+      "position": [
+        740,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "description": "Send WhatsApp messages, images, documents or check connection status using Evolution API. Use this when users want to send WhatsApp messages or manage WhatsApp communications.",
+        "operation": "sendTextMessage",
+        "phoneNumber": "=$fromAI('phoneNumber', 'WhatsApp phone number with country code (no + sign)', 'string')",
+        "messageText": "=$fromAI('messageText', 'The WhatsApp message text to send', 'string')"
+      },
+      "id": "5a2ba2ef-2c44-4c4c-5dc3-4ef0d0f0d0f0",
+      "name": "Evolution API Tool",
+      "type": "evolutionApiTool",
+      "typeVersion": 1,
+      "position": [
+        740,
+        320
+      ],
+      "credentials": {
+        "evolutionApi": {
+          "id": "evolution-api-credentials-id",
+          "name": "Evolution API Credentials"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "type": "text"
+      },
+      "id": "4a1aa1ee-1c43-4c4c-4cc2-3eefd0f0d0f0",
+      "name": "Output Parser",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1,
+      "position": [
+        740,
+        380
+      ]
+    }
+  ],
+  "connections": {
+    "Chat Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Window Buffer Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Evolution API Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    "ai-agent",
+    "whatsapp",
+    "evolution-api",
+    "messaging"
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-08-29T05:30:00.000Z",
+  "versionId": "1.0.0"
+}
